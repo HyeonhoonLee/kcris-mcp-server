@@ -129,7 +129,6 @@ Claude Desktop에서 **설정 → Developer → Edit Config** 로 열 수 있습
 ```
 
 - 설정 후 Claude Desktop을 완전히 종료했다가 다시 실행하세요.
-- 채팅창 옆 **🔨(도구)** 아이콘이 보이면 K-CRIS 도구가 로드된 것입니다.
 
 ### Claude에게 해볼 수 있는 질문 예시
 
