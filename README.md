@@ -1,6 +1,6 @@
 # K-CRIS MCP Server
 
-한국 임상연구정보(K-CRIS, 질병관리청 임상연구 DB) OpenAPI를 연동하는 **MCP(Model Context Protocol) 서버**입니다.  
+공공데이터 포털의 [질병관리청 임상연구 DB](https://www.data.go.kr/data/3033869/openapi.do) OpenAPI를 연동하는 **MCP(Model Context Protocol) 서버**입니다.  
 [질병관리청 임상연구정보 OpenAPI 활용 가이드](https://www.data.go.kr/) (KCDC18-CRIS-API01 v1.3)를 기반으로 합니다.
 
 ## 기능
