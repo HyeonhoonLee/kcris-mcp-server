@@ -15,114 +15,123 @@
 - Python 3.10+
 - [uv](https://docs.astral.sh/uv/) (권장) 또는 pip
 
-## 인증키
+## 설치
 
-K-CRIS API는 **공공데이터포털(data.go.kr)** 인증키가 필요합니다.
-
-1. [공공데이터포털](https://www.data.go.kr/) 회원가입 후 로그인
-2. [「질병관리청_임상연구 DB」](https://www.data.go.kr/data/3033869/openapi.do) 오픈 API 검색 후 활용신청
-3. 마이페이지에서 **인증키(일반 인증키)** 발급
-
-## 설치 및 실행 (uvx)
-
-프로젝트 루트에서:
+### 1. 프로젝트로 이동
 
 ```bash
-# 의존성 설치 후 서버 실행 (stdio)
+cd kcris-mcp-server
+```
+
+### 2. Python 의존성 설치
+
+```bash
+pip install -r requirements.txt
+```
+
+또는 `uv`를 사용하는 경우:
+
+```bash
+uv pip install -r requirements.txt
+```
+
+로컬 패키지를 실행하려면 설치가 필요합니다:
+
+```bash
+pip install -e .
+# 또는 uv 사용 시
+uv pip install -e .
+```
+
+### 3. 환경 변수 설정
+
+```bash
+cp .env.example .env
+```
+
+`.env` 파일을 편집하여 다음 변수를 설정하세요:
+
+- `KCRIS_SERVICE_KEY`: 공공데이터포털에서 발급한 인증키 ([공공데이터포털](https://www.data.go.kr/) → [질병관리청_임상연구 DB](https://www.data.go.kr/data/3033869/openapi.do) 활용신청 후 발급)
+
+또는 `DATA_GO_KR_SERVICE_KEY`를 사용해도 됩니다.
+
+## 사용법
+
+### 서버 실행 (로컬)
+
+의존성 설치 후:
+
+```bash
 uv run kcris-mcp-server
 ```
 
-또는 **uvx**로 전역 실행(패키지가 PyPI에 공개된 경우):
+또는 패키지를 설치한 경우:
 
 ```bash
-uvx kcris-mcp-server
+python -m kcris_mcp_server
 ```
 
-로컬 패키지를 uvx로 실행하려면:
+### Claude Desktop 통합
 
-```bash
-uvx --from . kcris-mcp-server
-```
+Claude Desktop 설정 파일에 다음을 추가하세요.
 
-## MCP 클라이언트 설정 예시
-
-Cursor, Claude Desktop, Cline 등 MCP 클라이언트에 아래처럼 추가합니다.
-
-**stdio (권장)**
-
-```json
-{
-  "mcpServers": {
-    "kcris": {
-      "command": "uvx",
-      "args": ["--from", "/path/to/kcris-mcp-server", "kcris-mcp-server"],
-      "env": {
-        "KCRIS_SERVICE_KEY": "발급받은_인증키"
-      }
-    }
-  }
-}
-```
-
-로컬에서 `uv run` 사용 시:
-
-```json
-{
-  "mcpServers": {
-    "kcris": {
-      "command": "uv",
-      "args": ["run", "kcris-mcp-server"],
-      "cwd": "/path/to/kcris-mcp-server",
-      "env": {
-        "KCRIS_SERVICE_KEY": "발급받은_인증키"
-      }
-    }
-  }
-}
-```
-
----
-
-## Claude Desktop 사용 예시
-
-### 설정 파일 위치
-
-| OS | 경로 |
-|----|------|
-| **macOS** | `~/Library/Application Support/Claude/claude_desktop_config.json` |
-| **Windows** | `%APPDATA%\Claude\claude_desktop_config.json` |
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 
 Claude Desktop에서 **설정 → Developer → Edit Config** 로 열 수 있습니다.
 
-### 설정 예시 (Claude Desktop)
-
-`command`, `args`, `cwd`의 경로는 본인 환경에 맞게 넣으면 됩니다.
+#### 방법 1: Python 직접 사용
 
 ```json
 {
   "mcpServers": {
     "kcris": {
-      "command": "uvx",
-      "args": ["--from", "/path/to/kcris-mcp-server", "kcris-mcp-server"],
+      "command": "python",
+      "args": ["-m", "kcris_mcp_server"],
+      "cwd": "/path/to/kcris-mcp-server",
       "env": {
-        "KCRIS_SERVICE_KEY": "발급받은_인증키"
+        "KCRIS_SERVICE_KEY": "your-service-key-here"
       }
     }
   }
 }
 ```
 
-또는 `uv run` 사용:
+> 의존성 설치(`pip install -r requirements.txt`) 및 패키지 설치(`pip install -e .`)를 먼저 완료한 뒤 사용하세요.
+
+#### 방법 2: uv 사용 (권장)
 
 ```json
 {
   "mcpServers": {
     "kcris": {
       "command": "uv",
-      "args": ["run", "kcris-mcp-server"],
-      "cwd": "/path/to/kcris-mcp-server",
+      "args": [
+        "--directory",
+        "/path/to/kcris-mcp-server",
+        "run",
+        "kcris-mcp-server"
+      ],
       "env": {
-        "KCRIS_SERVICE_KEY": "발급받은_인증키"
+        "KCRIS_SERVICE_KEY": "your-service-key-here"
+      }
+    }
+  }
+}
+```
+
+> **참고**: Claude Desktop(GUI)에서는 `uv`가 PATH에 없을 수 있습니다. 이때는 `command`에 `uv`의 **전체 경로**를 넣으세요 (예: `/Users/username/.local/bin/uv`). 터미널에서 `which uv`로 확인할 수 있습니다.
+
+#### 방법 3: uvx 사용 (로컬 프로젝트)
+
+```json
+{
+  "mcpServers": {
+    "kcris": {
+      "command": "/path/to/uvx",
+      "args": ["--from", "/path/to/kcris-mcp-server", "kcris-mcp-server"],
+      "env": {
+        "KCRIS_SERVICE_KEY": "your-service-key-here"
       }
     }
   }
