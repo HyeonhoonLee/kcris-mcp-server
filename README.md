@@ -70,7 +70,7 @@ uv run kcris-mcp-server
 python -m kcris_mcp_server
 ```
 
-### Claude Desktop 통합
+### Claude Desktop 이용 방법
 
 Claude Desktop 설정 파일에 다음을 추가하세요.
 
@@ -139,7 +139,7 @@ Claude Desktop에서 **설정 → Developer → Edit Config** 로 열 수 있습
 
 - 설정 후 Claude Desktop을 완전히 종료했다가 다시 실행하세요.
 
-### Claude에게 해볼 수 있는 질문 예시
+### 질문 및 응답 예시
 
 | 하고 싶은 것 | 예시 질문 |
 |--------------|-----------|
@@ -149,11 +149,11 @@ Claude Desktop에서 **설정 → Developer → Edit Config** 로 열 수 있습
 
 예시 대화:
 
-- **사용자**: 당뇨 임상연구 목록 10개 검색해줘.
-- **Claude**: (K-CRIS 도구로 `kcris_list_studies(srch_word="당뇨", num_of_rows=10, page_no=1)` 호출 후 결과를 정리해서 보여줌)
+- **User**: 당뇨 임상연구 목록 10개 검색해줘.
+- **Response**: (K-CRIS 도구로 `kcris_list_studies(srch_word="당뇨", num_of_rows=10, page_no=1)` 호출 후 결과를 정리해서 보여줌)
 
-- **사용자**: KCT0002243 이 연구 상세 정보 알려줘.
-- **Claude**: (K-CRIS 도구로 `kcris_get_study(cris_number="KCT0002243")` 호출 후 연구제목, 모집현황, 참여기관, 중재군 등을 요약해서 보여줌)
+- **User**: KCT0002243 이 연구 상세 정보 알려줘.
+- **Response**: (K-CRIS 도구로 `kcris_get_study(cris_number="KCT0002243")` 호출 후 연구제목, 모집현황, 참여기관, 중재군 등을 요약해서 보여줌)
 
 ---
 
