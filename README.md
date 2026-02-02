@@ -156,4 +156,4 @@ Claude Desktop에서 **설정 → Developer → Edit Config** 로 열 수 있습
 
 ## 라이선스
 
-Apache-2.0
+This project is licensed under the MIT License.
