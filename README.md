@@ -21,13 +21,6 @@ K-CRIS API는 **공공데이터포털(data.go.kr)** 인증키가 필요합니다
 1. [공공데이터포털](https://www.data.go.kr/) 회원가입 후 로그인
 2. [「질병관리청_임상연구 DB」](https://www.data.go.kr/data/3033869/openapi.do) 오픈 API 검색 후 활용신청
 3. 마이페이지에서 **인증키(일반 인증키)** 발급
-4. 아래 환경변수 중 하나에 인증키 설정
-
-```bash
-export KCRIS_SERVICE_KEY="발급받은_인증키"
-# 또는
-export DATA_GO_KR_SERVICE_KEY="발급받은_인증키"
-```
 
 ## 설치 및 실행 (uvx)
 
