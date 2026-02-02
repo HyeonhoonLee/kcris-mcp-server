@@ -45,6 +45,7 @@ def _get_service_key() -> str:
     if not key or not key.strip():
         raise KcrisApiError(
             "30",
+            "인증키가 설정되지 않았습니다. KCRIS_SERVICE_KEY 또는 DATA_GO_KR_SERVICE_KEY 환경변수를 설정하세요.",
             "공공데이터포털(data.go.kr)에서 인증키를 발급받아 설정하세요.",
         )
     return key.strip()
