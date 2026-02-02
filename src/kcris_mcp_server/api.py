@@ -14,7 +14,7 @@ import httpx
 BASE_URL = "http://apis.data.go.kr/1352159/crisinfodataview"
 DEFAULT_TIMEOUT = 30.0
 
-# 공공데이터포털 에러 코드 (가이드 2. OpenAPI 에러 코드정리)
+# 공공데이터포털 에러 코드
 ERROR_CODES = {
     "00": "NORMAL_SERVICE",
     "01": "APPLICATION_ERROR",
