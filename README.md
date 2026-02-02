@@ -52,7 +52,7 @@ cp .env.example .env
 
 `.env` 파일을 편집하여 다음 변수를 설정하세요:
 
-- `DATA_GO_KR_SERVICE_KEY': 공공데이터포털에서 발급한 인증키 ([공공데이터포털](https://www.data.go.kr/) → [질병관리청_임상연구 DB](https://www.data.go.kr/data/3033869/openapi.do) 활용신청 후 발급)
+- `DATA_GO_KR_SERVICE_KEY': 공공데이터포털에서 발급한 인증키 ([공공데이터포털](https://www.data.go.kr/) → [질병관리청_임상연구 DB](https://www.data.go.kr/data/3033869/openapi.do) 활용신청 후 마이페이지에서 **개인 API인증키(일반 인증키)** 복사)
 
 ## 사용법
 
