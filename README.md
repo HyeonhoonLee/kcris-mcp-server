@@ -17,9 +17,10 @@
 
 ## 설치
 
-### 1. 프로젝트로 이동
+### 1. Git clone & 프로젝트로 이동
 
 ```bash
+git clone https://github.com/your-username/kcris-mcp-server.git
 cd kcris-mcp-server
 ```
 
@@ -51,9 +52,7 @@ cp .env.example .env
 
 `.env` 파일을 편집하여 다음 변수를 설정하세요:
 
-- `KCRIS_SERVICE_KEY`: 공공데이터포털에서 발급한 인증키 ([공공데이터포털](https://www.data.go.kr/) → [질병관리청_임상연구 DB](https://www.data.go.kr/data/3033869/openapi.do) 활용신청 후 발급)
-
-또는 `DATA_GO_KR_SERVICE_KEY`를 사용해도 됩니다.
+- `DATA_GO_KR_SERVICE_KEY': 공공데이터포털에서 발급한 인증키 ([공공데이터포털](https://www.data.go.kr/) → [질병관리청_임상연구 DB](https://www.data.go.kr/data/3033869/openapi.do) 활용신청 후 발급)
 
 ## 사용법
 
@@ -90,7 +89,7 @@ Claude Desktop에서 **설정 → Developer → Edit Config** 로 열 수 있습
       "args": ["-m", "kcris_mcp_server"],
       "cwd": "/path/to/kcris-mcp-server",
       "env": {
-        "KCRIS_SERVICE_KEY": "your-service-key-here"
+        "DATA_GO_KR_SERVICE_KEY": "your-service-key-here"
       }
     }
   }
@@ -113,7 +112,7 @@ Claude Desktop에서 **설정 → Developer → Edit Config** 로 열 수 있습
         "kcris-mcp-server"
       ],
       "env": {
-        "KCRIS_SERVICE_KEY": "your-service-key-here"
+        "DATA_GO_KR_SERVICE_KEY": "your-service-key-here"
       }
     }
   }
